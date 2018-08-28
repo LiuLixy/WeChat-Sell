@@ -5,8 +5,8 @@ import com.lwproject.wechatsell.dto.OrderDTO;
 /**
  * 买家service
  *
- * @author yuisama
- * @date 2018/8/12
+ * @Author: LiuWang
+ * @Created: 2018/8/19 07:46
  */
 public interface IBuyerService {
     OrderDTO findOneOrder(String openid, String orderId);

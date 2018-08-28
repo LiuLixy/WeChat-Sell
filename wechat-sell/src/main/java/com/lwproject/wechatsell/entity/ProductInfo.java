@@ -12,8 +12,9 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * @author yuisama
- * @date 2018/8/3 16:13
+ *
+ * @Author: LiuWang
+ * @Created: 2018/8/18 14:59
  */
 @Entity
 @Data

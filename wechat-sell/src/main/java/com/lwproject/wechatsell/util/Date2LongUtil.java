@@ -8,8 +8,8 @@ import java.io.IOException;
 import java.util.Date;
 
 /**
- * @author yuisama
- * @date 2018/8/12
+ * @Author: LiuWang
+ * @Created: 2018/8/22 10:16
  */
 public class Date2LongUtil extends JsonSerializer<Date> {
     @Override

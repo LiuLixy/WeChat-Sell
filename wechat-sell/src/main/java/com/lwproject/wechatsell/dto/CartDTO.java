@@ -5,8 +5,8 @@ import lombok.Data;
 /**
  * 购物车
  *
- * @author yuisama
- * @date 2018/8/9
+ * @Author: LiuWang
+ * @Created: 2018/8/18 14:02
  */
 @Data
 public class CartDTO {

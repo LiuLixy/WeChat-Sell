@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @author yuisama
- * @date 2018/8/17 13:52
+ * @Author: LiuWang
+ * @Created: 2018/8/22 15:19
  */
 public class OrderMaster2OrderDTO {
 

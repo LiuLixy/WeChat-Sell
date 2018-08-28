@@ -3,11 +3,14 @@ package com.lwproject.wechatsell.enums;
 import lombok.Getter;
 
 /**
- * @author yuisama
- * @date 2018/8/9
+ * @Author: LiuWang
+ * @Created: 2018/8/19 15:29
  */
 @Getter
 public enum ExceptionEnum {
+    /**
+     * 异常枚举类
+     */
     ORDER_FORM_ERROR(1, "订单表单入参有误"),
     PRODUCT_NOT_EXIST(10, "商品不存在"),
     PRODUCT_STOCK_ERROR(11, "商品库存不足"),

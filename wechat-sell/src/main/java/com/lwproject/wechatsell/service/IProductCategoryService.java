@@ -8,8 +8,8 @@ import java.util.Optional;
 /**
  * 商品类目表Service定义
  *
- * @author yuisama
- * @date 2018/8/3 15:13
+ * @Author: LiuWang
+ * @Created: 2018/8/19 08:49
  */
 public interface IProductCategoryService {
     Optional<ProductCategory> findOne(Integer categoryId);

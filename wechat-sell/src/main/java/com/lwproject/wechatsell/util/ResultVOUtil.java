@@ -3,8 +3,8 @@ package com.lwproject.wechatsell.util;
 import com.lwproject.wechatsell.vo.ResultVO;
 
 /**
- * @author yuisama
- * @date 2018/8/6 17:45
+ * @Author: LiuWang
+ * @Created: 2018/8/22 17:46
  */
 public class ResultVOUtil {
     public static ResultVO success(Object data) {

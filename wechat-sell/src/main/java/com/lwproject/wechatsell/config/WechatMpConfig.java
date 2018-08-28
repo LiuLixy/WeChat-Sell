@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 /**
- * @author yuisama
- * @date 2018/8/12
+ * @Author: LiuWang
+ * @Created: 2018/8/14 15:40
  */
 @Component
 public class WechatMpConfig {

@@ -16,8 +16,8 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author yuisama
- * @date 2018/8/23 16:14
+ * @Author: LiuWang
+ * @Created: 2018/8/23 19:31
  */
 @Controller
 @RequestMapping("/seller")

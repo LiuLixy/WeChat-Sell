@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author yuisama
- * @date 2018/8/12
+ * @Author: LiuWang
+ * @Created: 2018/8/22 14:06
  */
 @Slf4j
 public class OrderForm2OrderDTO {

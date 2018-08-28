@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * @author yuisama
- * @date 2018/8/12
+ * @Author: LiuWang
+ * @Created: 2018/8/24 07:50
  */
 @Controller
 @RequestMapping("/wechat")

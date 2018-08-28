@@ -22,8 +22,8 @@ import java.util.stream.Collectors;
 /**
  * 买家商品控制层
  *
- * @author yuisama
- * @date 2018/8/6 10:29
+ * @Author: LiuWang
+ * @Created: 2018/8/24 09:23
  */
 @RestController
 @RequestMapping("/buyer/product")
@@ -55,10 +55,13 @@ public class BuyerProductController {
         //3. 数据拼装
         List<ProductVO> productVOList = new ArrayList<>();
         for (ProductCategory productCategory : productCategoryList) {
+
             ProductVO productVO = new ProductVO();
             productVO.setCategoryName(productCategory.getCategoryName());
             productVO.setCategoryType(productCategory.getCategoryType());
+
             List<ProductInfoVO> productInfoVOS = new ArrayList<>();
+
             for (ProductInfo productInfo : productInfoLists) {
                 if (productInfo.getCategoryType().equals(productCategory.getCategoryType())) {
                     ProductInfoVO productInfoVO = new ProductInfoVO();
@@ -66,6 +69,7 @@ public class BuyerProductController {
                     productInfoVOS.add(productInfoVO);
                 }
             }
+
             productVO.setProductInfoVOLists(productInfoVOS);
             productVOList.add(productVO);
         }

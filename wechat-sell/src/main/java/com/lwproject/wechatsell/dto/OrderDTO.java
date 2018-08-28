@@ -16,8 +16,8 @@ import java.util.List;
 /**
  * 用于在各层传输订单信息类
  *
- * @author yuisama
- * @date 2018/8/9
+ * @Author: LiuWang
+ * @Created: 2018/8/19 08:02
  */
 @Data
 public class OrderDTO {

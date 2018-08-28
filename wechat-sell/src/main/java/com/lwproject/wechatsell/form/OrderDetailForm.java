@@ -5,8 +5,8 @@ import lombok.Data;
 import javax.validation.constraints.NotEmpty;
 
 /**
- * @author yuisama
- * @date 2018/8/12
+ * @Author: LiuWang
+ * @Created: 2018/8/20 09:26
  */
 @Data
 public class OrderDetailForm {

@@ -20,49 +20,49 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @author yuisama
- * @date 2018/8/3 17:25
+ * @Author: LiuWang
+ * @Created: 2018/8/19 10:38
  */
 @Service
 @Slf4j
 public class ProductInfoServiceImpl implements IProductService {
     @Autowired
-    private ProductInfoDao reposity;
+    private ProductInfoDao productInfoDao;
 
     @Override
     public Optional<ProductInfo> findOne(String productId) {
         Optional<ProductInfo> productInfo =
-                reposity.findById(productId);
+                productInfoDao.findById(productId);
         return productInfo;
     }
 
     @Override
     public List<ProductInfo> findUpAll() {
-        return reposity.findByProductStatus(0);
+        return productInfoDao.findByProductStatus(0);
     }
 
     @Override
     public Page<ProductInfo> findAll(Pageable pageable) {
-        return reposity.findAll(pageable);
+        return productInfoDao.findAll(pageable);
     }
 
     @Override
     public ProductInfo save(ProductInfo productInfo) {
-        return reposity.save(productInfo);
+        return productInfoDao.save(productInfo);
     }
 
     @Override
     @Transactional
     public void increaseStock(List<CartDTO> cartDTOList) {
         for (CartDTO cartDTO : cartDTOList) {
-            Optional<ProductInfo> productInfo = reposity.findById(cartDTO.getProductId());
+            Optional<ProductInfo> productInfo = productInfoDao.findById(cartDTO.getProductId());
             if (productInfo == null) {
                 throw new ProductNotFoundException(ExceptionEnum.PRODUCT_NOT_EXIST);
             }
             Integer result = productInfo.get().getProductStock()
                     + cartDTO.getProductQuantity();
             productInfo.get().setProductStock(result);
-            reposity.save(productInfo.get());
+            productInfoDao.save(productInfo.get());
         }
     }
 
@@ -70,7 +70,7 @@ public class ProductInfoServiceImpl implements IProductService {
     @Transactional
     public void decreaseStock(List<CartDTO> cartDTOList) {
         for (CartDTO cartDTO : cartDTOList) {
-            Optional<ProductInfo> productInfo = reposity.findById(cartDTO.getProductId());
+            Optional<ProductInfo> productInfo = productInfoDao.findById(cartDTO.getProductId());
             if (productInfo == null) {
                 throw new ProductNotFoundException(ExceptionEnum.PRODUCT_NOT_EXIST);
             }
@@ -81,14 +81,14 @@ public class ProductInfoServiceImpl implements IProductService {
             }
             productInfo.get().setProductStock(result);
 
-            reposity.save(productInfo.get());
+            productInfoDao.save(productInfo.get());
         }
     }
 
     @Override
     @Transactional
     public ProductInfo onSale(String productId) {
-        Optional<ProductInfo> productInfo = reposity.findById(productId);
+        Optional<ProductInfo> productInfo = productInfoDao.findById(productId);
         if (productInfo == null) {
             throw new ProductNotFoundException(ExceptionEnum.PRODUCT_NOT_EXIST);
         }
@@ -98,13 +98,13 @@ public class ProductInfoServiceImpl implements IProductService {
         }
         log.info("商品上架ing..，商品Id为{}", productId);
         productInfo.get().setProductStatus(ProductStatusEnum.UP.getCode());
-        return reposity.save(productInfo.get());
+        return productInfoDao.save(productInfo.get());
     }
 
     @Override
     @Transactional
     public ProductInfo offSale(String productId) {
-        Optional<ProductInfo> productInfo = reposity.findById(productId);
+        Optional<ProductInfo> productInfo = productInfoDao.findById(productId);
         if (productInfo == null) {
             throw new ProductNotFoundException(ExceptionEnum.PRODUCT_NOT_EXIST);
         }
@@ -114,7 +114,7 @@ public class ProductInfoServiceImpl implements IProductService {
         }
         log.info("商品下架中..，商品Id为{}", productId);
         productInfo.get().setProductStatus(ProductStatusEnum.DOWN.getCode());
-        return reposity.save(productInfo.get());
+        return productInfoDao.save(productInfo.get());
     }
 
 }

@@ -3,8 +3,8 @@ package com.lwproject.wechatsell.exception;
 import com.lwproject.wechatsell.enums.ExceptionEnum;
 
 /**
- * @author yuisama
- * @date 2018/8/13
+ * @Author: LiuWang
+ * @Created: 2018/8/20 12:29
  */
 public class WechatException extends RuntimeException {
     private Integer code;

@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 /**
- * @author yuisama
- * @date 2018/8/3 16:20
+ * @Author: LiuWang
+ * @Created: 2018/8/18 09:02
  */
 public interface ProductInfoDao extends JpaRepository<ProductInfo, String> {
     /**

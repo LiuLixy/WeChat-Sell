@@ -4,8 +4,8 @@ import com.lwproject.wechatsell.enums.ExceptionEnum;
 import lombok.Getter;
 
 /**
- * @author yuisama
- * @date 2018/8/21 11:08
+ * @Author: LiuWang
+ * @Created: 2018/8/19 18:34
  */
 @Getter
 public class ProductStatusError extends RuntimeException {

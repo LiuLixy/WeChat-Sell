@@ -8,8 +8,8 @@ import java.util.List;
 /**
  * 商品(包含类目)
  *
- * @author yuisama
- * @date 2018/8/6 16:46
+ * @Author: LiuWang
+ * @Created: 2018/8/22 18:58
  */
 @Data
 public class ProductVO {

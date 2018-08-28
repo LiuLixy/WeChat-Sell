@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @author yuisama
- * @date 2018/8/3 17:19
+ * @Author: LiuWang
+ * @Created: 2018/8/19 11:29
  */
 public interface IProductService {
     Optional<ProductInfo> findOne(String productId);

@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * WechatsellApplication
  *
  * @Author: LiuWang
- * @Created: 2018/8/24 16:58
+ * @Created: 2018/8/17 16:58
  */
 @SpringBootApplication
 public class WechatsellApplication {

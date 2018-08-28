@@ -9,8 +9,8 @@ import java.math.BigDecimal;
 /**
  * 订单详情实体
  *
- * @author yuisama
- * @date 2018/8/8
+ * @Author: LiuWang
+ * @Created: 2018/8/18 14:29
  */
 @Data
 @Entity

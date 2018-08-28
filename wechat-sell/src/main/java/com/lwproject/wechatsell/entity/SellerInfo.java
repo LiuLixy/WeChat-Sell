@@ -6,8 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * @author yuisama
- * @date 2018/8/23 12:01
+ * @Author: LiuWang
+ * @Created: 2018/8/18 15:59
  */
 @Entity
 @Data

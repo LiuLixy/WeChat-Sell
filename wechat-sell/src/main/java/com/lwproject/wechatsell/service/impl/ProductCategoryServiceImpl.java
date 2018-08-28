@@ -11,31 +11,32 @@ import java.util.Optional;
 
 /**
  * 商品类目表Service实现类
- * @author yuisama
- * @date 2018/8/3 15:16
+ *
+ * @Author: LiuWang
+ * @Created: 2018/8/19 14:26
  */
 @Service
 public class ProductCategoryServiceImpl implements IProductCategoryService {
     @Autowired
-    private ProductCategoryDao reposity;
+    private ProductCategoryDao productCategoryDao;
 
     @Override
     public Optional<ProductCategory> findOne(Integer categoryId) {
-        return reposity.findById(categoryId);
+        return productCategoryDao.findById(categoryId);
     }
 
     @Override
     public List<ProductCategory> findAll() {
-        return reposity.findAll();
+        return productCategoryDao.findAll();
     }
 
     @Override
     public List<ProductCategory> findByCategoryTypeIn(List<Integer> categoryTypeList) {
-        return reposity.findByCategoryTypeIn(categoryTypeList);
+        return productCategoryDao.findByCategoryTypeIn(categoryTypeList);
     }
 
     @Override
     public ProductCategory save(ProductCategory productCategory) {
-        return reposity.save(productCategory);
+        return productCategoryDao.save(productCategory);
     }
 }

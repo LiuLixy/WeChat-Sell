@@ -17,9 +17,8 @@ import java.util.Map;
 
 /**
  * 卖家订单详情页
- *
- * @author yuisama
- * @date 2018/8/17 14:11
+ * @Author: LiuWang
+ * @Created: 2018/8/23 09:48
  */
 @Controller
 @RequestMapping("/seller/order")

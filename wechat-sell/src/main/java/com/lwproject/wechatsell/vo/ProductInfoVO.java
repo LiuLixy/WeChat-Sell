@@ -6,8 +6,8 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
- * @author yuisama
- * @date 2018/8/6 16:50
+ * @Author: LiuWang
+ * @Created: 2018/8/22 18:25
  */
 @Data
 public class ProductInfoVO {

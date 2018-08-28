@@ -3,11 +3,14 @@ package com.lwproject.wechatsell.enums;
 import lombok.Getter;
 
 /**
- * @author yuisama
- * @date 2018/8/17 15:58
+ * @Author: LiuWang
+ * @Created: 2018/8/19 16:29
  */
 @Getter
 public enum PayStatusEnum implements IEnumCode {
+    /**
+     * 支付状态枚举类
+     */
     WAIT(0, "等待支付"),
     SUCCESS(1, "支付成功");
     private Integer code;

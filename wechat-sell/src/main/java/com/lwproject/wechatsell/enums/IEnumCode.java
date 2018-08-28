@@ -1,8 +1,8 @@
 package com.lwproject.wechatsell.enums;
 
 /**
- * @author yuisama
- * @date 2018/8/17 15:49
+ * @Author: LiuWang
+ * @Created: 2018/8/19 16:29
  */
 public interface IEnumCode {
     Integer getCode();

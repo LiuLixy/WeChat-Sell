@@ -4,8 +4,8 @@ import com.lwproject.wechatsell.enums.ExceptionEnum;
 import lombok.Getter;
 
 /**
- * @author yuisama
- * @date 2018/8/10
+ * @Author: LiuWang
+ * @Created: 2018/8/19 18:12
  */
 @Getter
 public class OrderException extends RuntimeException {

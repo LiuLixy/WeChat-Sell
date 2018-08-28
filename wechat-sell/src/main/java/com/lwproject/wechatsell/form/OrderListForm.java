@@ -7,8 +7,8 @@ import javax.validation.constraints.NotEmpty;
 /**
  * 查询订单表单验证类
  *
- * @author yuisama
- * @date 2018/8/12
+ * @Author: LiuWang
+ * @Created: 2018/8/20 11:03
  */
 @Data
 public class OrderListForm {
