@@ -1,6 +1,5 @@
 package com.lwproject.wechatsell.controller;
 
-
 import com.lwproject.wechatsell.vo.ProductInfoVO;
 import com.lwproject.wechatsell.vo.ProductVO;
 import com.lwproject.wechatsell.vo.ResultVO;
@@ -23,7 +22,7 @@ import java.util.stream.Collectors;
  * 买家商品控制层
  *
  * @Author: LiuWang
- * @Created: 2018/8/24 09:23
+ * @Created: 2018/8/25 16:44
  */
 @RestController
 @RequestMapping("/buyer/product")
@@ -32,7 +31,6 @@ public class BuyerProductController {
     private IProductService productService;
     @Autowired
     private IProductCategoryService productCategoryService;
-
     @GetMapping("/list")
     public ResultVO list() {
         //1. 查询所有上架的商品
@@ -45,31 +43,27 @@ public class BuyerProductController {
 //            categoryTypeList.add(productInfo.getCategoryType());
 //        }
 //        productCategoryService.findByCategoryTypeIn(categoryTypeList);
-        // 精简做法
+       // 精简做法
         List<Integer> categoryList =
                 productInfoLists.stream()
-                        .map(e -> e.getCategoryType())
-                        .collect(Collectors.toList());
+                .map(e -> e.getCategoryType())
+                .collect(Collectors.toList());
         List<ProductCategory> productCategoryList =
                 productCategoryService.findByCategoryTypeIn(categoryList);
         //3. 数据拼装
         List<ProductVO> productVOList = new ArrayList<>();
         for (ProductCategory productCategory : productCategoryList) {
-
             ProductVO productVO = new ProductVO();
             productVO.setCategoryName(productCategory.getCategoryName());
             productVO.setCategoryType(productCategory.getCategoryType());
-
             List<ProductInfoVO> productInfoVOS = new ArrayList<>();
-
             for (ProductInfo productInfo : productInfoLists) {
                 if (productInfo.getCategoryType().equals(productCategory.getCategoryType())) {
                     ProductInfoVO productInfoVO = new ProductInfoVO();
-                    BeanUtils.copyProperties(productInfo, productInfoVO);
+                    BeanUtils.copyProperties(productInfo,productInfoVO);
                     productInfoVOS.add(productInfoVO);
                 }
             }
-
             productVO.setProductInfoVOLists(productInfoVOS);
             productVOList.add(productVO);
         }

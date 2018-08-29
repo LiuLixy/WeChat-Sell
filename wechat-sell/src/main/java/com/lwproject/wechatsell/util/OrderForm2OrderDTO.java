@@ -1,13 +1,13 @@
 package com.lwproject.wechatsell.util;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
 import com.lwproject.wechatsell.dto.OrderDTO;
 import com.lwproject.wechatsell.entity.OrderDetail;
 import com.lwproject.wechatsell.enums.ExceptionEnum;
 import com.lwproject.wechatsell.exception.OrderException;
 import com.lwproject.wechatsell.form.OrderForm;
-import com.google.gson.Gson;
-import com.google.gson.JsonSyntaxException;
-import com.google.gson.reflect.TypeToken;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * @Author: LiuWang
- * @Created: 2018/8/22 14:06
+ * @Created: 2018/8/26 14:59
  */
 @Slf4j
 public class OrderForm2OrderDTO {

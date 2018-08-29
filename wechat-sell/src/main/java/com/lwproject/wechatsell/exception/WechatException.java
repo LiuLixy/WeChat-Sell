@@ -4,7 +4,7 @@ import com.lwproject.wechatsell.enums.ExceptionEnum;
 
 /**
  * @Author: LiuWang
- * @Created: 2018/8/20 12:29
+ * @Created: 2018/8/26 15:23
  */
 public class WechatException extends RuntimeException {
     private Integer code;

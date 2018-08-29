@@ -6,7 +6,7 @@ import lombok.Data;
  * 卖家端类目表单
  *
  * @Author: LiuWang
- * @Created: 2018/8/20 08:54
+ * @Created: 2018/8/26 14:55
  */
 @Data
 public class CategoryForm {

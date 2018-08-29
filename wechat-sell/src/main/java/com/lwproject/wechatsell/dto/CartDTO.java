@@ -6,7 +6,7 @@ import lombok.Data;
  * 购物车
  *
  * @Author: LiuWang
- * @Created: 2018/8/18 14:02
+ * @Created: 2018/8/25 20:17
  */
 @Data
 public class CartDTO {
@@ -23,7 +23,5 @@ public class CartDTO {
         this.productId = productId;
         this.productQuantity = productQuantity;
     }
-
-    public CartDTO() {
-    }
+    public CartDTO(){}
 }

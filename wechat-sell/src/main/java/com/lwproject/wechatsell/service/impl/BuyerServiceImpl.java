@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @Author: LiuWang
- * @Created: 2018/8/19 09:46
+ * @Created: 2018/8/26 14:27
  */
 @Service
 @Slf4j
@@ -25,14 +25,14 @@ public class BuyerServiceImpl implements IBuyerService {
     }
 
     @Override
-    public OrderDTO cancleOrder(String openid, String orderId) {
+    public OrderDTO cancelOrder(String openid, String orderId) {
         OrderDTO orderDTO = checkOrderOwner(openid, orderId);
         if (orderDTO == null) {
             log.error("【取消订单】查不到该订单,orderId={},openid={}"
                     , orderId, openid);
             throw new OrderException(ExceptionEnum.ORDER_NOT_EXISTS);
         }
-        return orderService.cancleOrder(orderDTO);
+        return orderService.cancelOrder(orderDTO);
     }
 
     private OrderDTO checkOrderOwner(String openid, String orderId) {

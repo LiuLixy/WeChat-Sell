@@ -5,7 +5,7 @@ import lombok.Getter;
 
 /**
  * @Author: LiuWang
- * @Created: 2018/8/19 18:12
+ * @Created: 2018/8/26 14:24
  */
 @Getter
 public class OrderException extends RuntimeException {
@@ -15,8 +15,7 @@ public class OrderException extends RuntimeException {
         super(exceptionEnum.getMsg());
         this.code = code;
     }
-
-    public OrderException(Integer code, String msg) {
+    public OrderException(Integer code,String msg) {
         super(msg);
         this.code = code;
     }

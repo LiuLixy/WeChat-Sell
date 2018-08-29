@@ -12,9 +12,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- *
  * @Author: LiuWang
- * @Created: 2018/8/18 14:59
+ * @Created: 2018/8/25 16:03
  */
 @Entity
 @Data
@@ -55,7 +54,6 @@ public class ProductInfo {
     private Integer categoryType;
     private Date createTime;
     private Date updateTime;
-
     @JsonIgnore
     public ProductStatusEnum getProductStatusEnum() {
         return EnumUtil.getEnumDataByCode(productStatus, ProductStatusEnum.class);

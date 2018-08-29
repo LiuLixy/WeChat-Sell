@@ -5,7 +5,7 @@ import lombok.Getter;
 
 /**
  * @Author: LiuWang
- * @Created: 2018/8/19 19:48
+ * @Created: 2018/8/26 13:48
  */
 @Getter
 public class ProductStockErrorException extends RuntimeException {

@@ -10,19 +10,17 @@ import javax.persistence.Id;
 import java.util.Date;
 
 /**
- * 买家类目实体类
+ * 此类用于与数据库 product_category 相互映射
  *
  * @Author: LiuWang
- * @Created: 2018/8/18 15:29
+ * @Created: 2018/8/20 18:26
  */
 @Entity
 @DynamicUpdate
 @Data
 public class ProductCategory {
-
     public ProductCategory() {
     }
-
     public ProductCategory(String categoryName, Integer categoryType) {
         this.categoryName = categoryName;
         this.categoryType = categoryType;

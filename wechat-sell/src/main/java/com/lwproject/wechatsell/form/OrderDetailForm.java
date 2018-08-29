@@ -6,7 +6,7 @@ import javax.validation.constraints.NotEmpty;
 
 /**
  * @Author: LiuWang
- * @Created: 2018/8/20 09:26
+ * @Created: 2018/8/26 14:56
  */
 @Data
 public class OrderDetailForm {

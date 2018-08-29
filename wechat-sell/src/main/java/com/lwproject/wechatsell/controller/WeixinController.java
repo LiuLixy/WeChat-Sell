@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Queue;
+
 /**
  * @Author: LiuWang
- * @Created: 2018/8/24 10:12
+ * @Created: 2018/8/26 15:33
  */
 @RestController
 @RequestMapping("/weixin")
@@ -18,12 +20,12 @@ public class WeixinController {
     @GetMapping("/auth")
     public void auth(@RequestParam("code") String code) {
         log.info("进入auth...");
-        log.info("code={}", code);
-        String url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxac678757f8fa0868" +
-                "&secret=82a44ae9aeaaca6647dc6cae4148d612" +
-                "&code=" + code + "&grant_type=authorization_code";
+        log.info("code={}",code);
+        String url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxcbac1a7db0ec3899" +
+                "&secret=b89562aced06608763c09615d0264a8d" +
+                "&code="+code+"&grant_type=authorization_code";
         RestTemplate restTemplate = new RestTemplate();
-        String response = restTemplate.getForObject(url, String.class);
-        log.info("response={}", response);
+        String response = restTemplate.getForObject(url,String.class);
+        log.info("response={}",response);
     }
 }

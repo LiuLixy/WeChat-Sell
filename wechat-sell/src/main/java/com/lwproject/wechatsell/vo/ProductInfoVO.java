@@ -6,8 +6,10 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
+ * 返回给前端页面的商品详情
+ *
  * @Author: LiuWang
- * @Created: 2018/8/22 18:25
+ * @Created: 2018/8/25 16:58
  */
 @Data
 public class ProductInfoVO {

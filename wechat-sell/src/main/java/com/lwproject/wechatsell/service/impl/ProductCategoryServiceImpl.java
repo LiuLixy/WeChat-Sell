@@ -1,7 +1,7 @@
 package com.lwproject.wechatsell.service.impl;
 
 import com.lwproject.wechatsell.entity.ProductCategory;
-import com.lwproject.wechatsell.dao.ProductCategoryDao;
+import com.lwproject.wechatsell.repository.ProductCategoryReposity;
 import com.lwproject.wechatsell.service.IProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,30 +13,30 @@ import java.util.Optional;
  * 商品类目表Service实现类
  *
  * @Author: LiuWang
- * @Created: 2018/8/19 14:26
+ * @Created: 2018/8/25 15:13
  */
 @Service
 public class ProductCategoryServiceImpl implements IProductCategoryService {
     @Autowired
-    private ProductCategoryDao productCategoryDao;
+    private ProductCategoryReposity reposity;
 
     @Override
     public Optional<ProductCategory> findOne(Integer categoryId) {
-        return productCategoryDao.findById(categoryId);
+        return reposity.findById(categoryId);
     }
 
     @Override
     public List<ProductCategory> findAll() {
-        return productCategoryDao.findAll();
+        return reposity.findAll();
     }
 
     @Override
     public List<ProductCategory> findByCategoryTypeIn(List<Integer> categoryTypeList) {
-        return productCategoryDao.findByCategoryTypeIn(categoryTypeList);
+        return reposity.findByCategoryTypeIn(categoryTypeList);
     }
 
     @Override
     public ProductCategory save(ProductCategory productCategory) {
-        return productCategoryDao.save(productCategory);
+        return reposity.save(productCategory);
     }
 }

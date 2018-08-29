@@ -1,17 +1,12 @@
-server:
-  servlet:
-    context-path:
-      /sell
-
 spring:
-# 数据库配置
+#  数据库配置
   datasource:
-    username: root
-    password: xyxy
-    url: jdbc:mysql://localhost:3306/sell_new?characterEncoding=UTF-8&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
+    userName : root
+    password : xyxy
+    url : jdbc:mysql://127.0.0.1/sell_new?characterEncoding=utf-8&useSSL=false
   jpa:
-    show-sql: true
+    show-sql : true
     open-in-view: true
   jackson:
     default-property-inclusion: non_null
@@ -19,14 +14,15 @@ spring:
     host: 127.0.0.1
     port: 6379
 
-# 日志格式
-logging:
-  pattern:
-    console: "%d -%msg%n"
+server:
+  servlet:
+    context-path:
+      /sell
 
 wechat:
   mpAppId: wxac678757f8fa0868
   mpAppSecret: 82a44ae9aeaaca6647dc6cae4148d612
 
 project-url:
-  wechatMpAuthorize:  http://lwwechatsell.s1.natapp.cc
+  wechatMpAuthorize: http://lwwechatsell.s1.natapp.cc
+

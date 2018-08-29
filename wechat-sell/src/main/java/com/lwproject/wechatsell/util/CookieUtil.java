@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * @Author: LiuWang
- * @Created: 2018/8/22 09:46
+ * @Created: 2018/8/26 15:20
  */
 public class CookieUtil {
     public static void set(String name, String value, HttpServletResponse response,

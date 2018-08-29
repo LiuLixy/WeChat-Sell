@@ -5,7 +5,7 @@ import lombok.Getter;
 
 /**
  * @Author: LiuWang
- * @Created: 2018/8/19 19:24
+ * @Created: 2018/8/26 13:38
  */
 @Getter
 public class ProductNotFoundException extends RuntimeException {

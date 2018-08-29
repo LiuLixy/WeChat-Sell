@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: LiuWang
- * @Created: 2018/8/23 19:31
+ * @Created: 2018/8/26 15:24
  */
 @Controller
 @RequestMapping("/seller")
@@ -28,12 +28,11 @@ public class SellerLoginController {
     private StringRedisTemplate stringRedisTemplate;
     @Autowired
     private ISellerInfoService sellerInfoService;
-
     @RequestMapping("/login")
     @ResponseBody
-    public String login(@RequestParam(value = "username") String username,
-                        @RequestParam(value = "password") String password,
-                        HttpServletResponse response) {
+    public String login(@RequestParam(value = "username")String username,
+                              @RequestParam(value = "password")String password,
+                              HttpServletResponse response) {
         // 用户信息校验
         SellerInfo sellerInfo = sellerInfoService.findByUserName(username);
         if (sellerInfo == null) {
@@ -46,9 +45,9 @@ public class SellerLoginController {
         }
         // token写入Redis
         String token = UUID.randomUUID().toString();
-        stringRedisTemplate.opsForValue().set(username, token, EXPIRE_TIME, TimeUnit.SECONDS);
+        stringRedisTemplate.opsForValue().set(username,token,EXPIRE_TIME, TimeUnit.SECONDS);
         // token写入cookie
-        CookieUtil.set(username, token, response, EXPIRE_TIME);
+        CookieUtil.set(username,token,response,EXPIRE_TIME);
         return "200";
     }
 }

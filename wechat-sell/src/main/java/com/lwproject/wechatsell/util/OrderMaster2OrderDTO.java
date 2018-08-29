@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 /**
  * @Author: LiuWang
- * @Created: 2018/8/22 15:19
+ * @Created: 2018/8/26 14:25
  */
 public class OrderMaster2OrderDTO {
 
@@ -22,8 +22,8 @@ public class OrderMaster2OrderDTO {
     public static List<OrderDTO> convert(List<OrderMaster> orderMasterList) {
         List<OrderDTO> orderDTOList =
                 orderMasterList.stream()
-                        .map(e -> convert(e))
-                        .collect(Collectors.toList());
+                .map(e -> convert(e))
+                .collect(Collectors.toList());
         return orderDTOList;
     }
 }

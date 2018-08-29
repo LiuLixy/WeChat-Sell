@@ -4,15 +4,15 @@ import lombok.Getter;
 
 /**
  * @Author: LiuWang
- * @Created: 2018/8/19 16:29
+ * @Created: 2018/8/26 14:20
  */
 @Getter
 public enum PayStatusEnum implements IEnumCode {
     /**
      * 支付状态枚举类
      */
-    WAIT(0, "等待支付"),
-    SUCCESS(1, "支付成功");
+    WAIT(0,"等待支付"),
+    SUCCESS(1,"支付成功");
     private Integer code;
     private String msg;
 

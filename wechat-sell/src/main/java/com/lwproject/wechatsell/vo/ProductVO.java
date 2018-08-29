@@ -6,10 +6,10 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * 商品(包含类目)
+ * 用于三层之间商品类目与商品详情之间的实体类
  *
  * @Author: LiuWang
- * @Created: 2018/8/22 18:58
+ * @Created: 2018/8/25 16:56
  */
 @Data
 public class ProductVO {

@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
+ * 用于微信 api 获取的控制层
+ *
  * @Author: LiuWang
- * @Created: 2018/8/24 07:50
+ * @Created: 2018/8/20 15:30
  */
 @Controller
 @RequestMapping("/wechat")
@@ -26,29 +28,27 @@ public class WechatController {
     private WxMpService wxMpService;
     @Autowired
     private ProjectUrlConfig projectUrlConfig;
-
     @GetMapping("/authorize")
     public String authorize(@RequestParam("returnUrl") String returnUrl) {
         // 1.配置
         // 2.调用方法
-        String url = projectUrlConfig.getWechatMpAuthorize() + "/sell/wechat/userInfo";
+        String url = projectUrlConfig.getWechatMpAuthorize()+"/sell/wechat/userInfo";
         String redirectUrl = wxMpService.oauth2buildAuthorizationUrl(
                 url, WxConsts.OAuth2Scope.SNSAPI_BASE, returnUrl);
-        return "redirect:" + redirectUrl;
+        return "redirect:"+redirectUrl;
     }
-
     @GetMapping("/userInfo")
     public String userInfo(@RequestParam("code") String code,
                            @RequestParam("state") String returnUrl) {
         WxMpOAuth2AccessToken wxMpOAuth2AccessToken;
         try {
-            wxMpOAuth2AccessToken = wxMpService.oauth2getAccessToken(code);
+            wxMpOAuth2AccessToken =  wxMpService.oauth2getAccessToken(code);
         } catch (WxErrorException e) {
-            log.error("【微信授权】{}", e);
+            log.error("【微信授权】{}",e);
             throw new WechatException(ExceptionEnum.WECHAT_MP_ERROR);
         }
         String openId = wxMpOAuth2AccessToken.getOpenId();
-        log.info("返回信息为:" + "redirect:" + returnUrl + "?openid=" + openId);
+        log.info("返回信息为:"+"redirect:" + returnUrl + "?openid=" + openId);
         return "redirect:" + returnUrl + "?openid=" + openId;
     }
 }

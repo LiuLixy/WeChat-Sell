@@ -10,20 +10,18 @@ import org.springframework.stereotype.Component;
 
 /**
  * @Author: LiuWang
- * @Created: 2018/8/14 15:40
+ * @Created: 2018/8/26 15:37
  */
 @Component
 public class WechatMpConfig {
     @Autowired
     private WechatAccountConfig accountConfig;
-
     @Bean
     public WxMpService wxMpService() {
         WxMpService wxMpService = new WxMpServiceImpl();
         wxMpService.setWxMpConfigStorage(wxMpConfigStorage());
         return wxMpService;
     }
-
     @Bean
     public WxMpConfigStorage wxMpConfigStorage() {
         WxMpInMemoryConfigStorage wxMpConfigStorage = new WxMpInMemoryConfigStorage();

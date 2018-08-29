@@ -6,7 +6,7 @@ import lombok.Data;
  * 请求返回的最外层对象
  *
  * @Author: LiuWang
- * @Created: 2018/8/22 19:31
+ * @Created: 2018/8/26 10:22
  */
 @Data
 public class ResultVO<T> {

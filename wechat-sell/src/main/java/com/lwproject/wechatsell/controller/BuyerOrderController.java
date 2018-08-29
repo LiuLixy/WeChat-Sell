@@ -1,10 +1,10 @@
 package com.lwproject.wechatsell.controller;
 
-import com.lwproject.wechatsell.form.OrderDetailForm;
 import com.lwproject.wechatsell.vo.ResultVO;
 import com.lwproject.wechatsell.dto.OrderDTO;
 import com.lwproject.wechatsell.enums.ExceptionEnum;
 import com.lwproject.wechatsell.exception.OrderException;
+import com.lwproject.wechatsell.form.OrderDetailForm;
 import com.lwproject.wechatsell.form.OrderForm;
 import com.lwproject.wechatsell.form.OrderListForm;
 import com.lwproject.wechatsell.service.IBuyerService;
@@ -29,7 +29,7 @@ import java.util.Map;
 
 /**
  * @Author: LiuWang
- * @Created: 2018/8/23 07:53
+ * @Created: 2018/8/26 14:47
  */
 @RestController
 @RequestMapping("/buyer/order")
@@ -39,20 +39,18 @@ public class BuyerOrderController {
     private IOrderService orderService;
     @Autowired
     private IBuyerService buyerService;
-
     /**
      * 创建订单Controller
-     *
-     * @param orderForm     表单入参校验
+     * @param orderForm 表单入参校验
      * @param bindingResult
      * @return
      */
     @PostMapping("/create")
-    public ResultVO<Map<String, String>> create(@Valid OrderForm orderForm,
-                                                BindingResult bindingResult) {
+    public ResultVO<Map<String,String>> create(@Valid OrderForm orderForm,
+                                               BindingResult bindingResult) {
         // 创建订单入参有误
         if (bindingResult.hasErrors()) {
-            log.error("【创建订单】参数不正确,orderForm={}", orderForm);
+            log.error("【创建订单】参数不正确,orderForm={}",orderForm);
             throw new OrderException(ExceptionEnum.ORDER_FORM_ERROR.getCode(),
                     bindingResult.getFieldError().getDefaultMessage());
         }
@@ -63,14 +61,13 @@ public class BuyerOrderController {
             throw new OrderException(ExceptionEnum.CART_EMPTY);
         }
         OrderDTO result = orderService.create(orderDTO);
-        Map<String, String> map = new HashMap<>();
-        map.put("orderId", result.getOrderId());
+        Map<String,String> map = new HashMap<>();
+        map.put("orderId",result.getOrderId());
         return ResultVOUtil.success(map);
     }
 
     /**
      * 查询订单列表Controller
-     *
      * @param orderListForm 表单入参校验
      * @param bindingResult
      * @return
@@ -83,15 +80,14 @@ public class BuyerOrderController {
             throw new OrderException(ExceptionEnum.ORDER_FORM_ERROR.getCode(),
                     bindingResult.getFieldError().getDefaultMessage());
         }
-        PageRequest request = PageRequest.of(orderListForm.getPage(), orderListForm.getSize());
+        PageRequest request = PageRequest.of(orderListForm.getPage(),orderListForm.getSize());
         Page<OrderDTO> orderDTOPage = orderService.findOrderList(
-                orderListForm.getOpenid(), request);
+                orderListForm.getOpenid(),request);
         return ResultVOUtil.success(orderDTOPage.getContent());
     }
 
     /**
      * 查询订单详情controller
-     *
      * @param orderDetailForm 订单详情表单校验
      * @param bindingResult
      * @return
@@ -100,7 +96,7 @@ public class BuyerOrderController {
     public ResultVO<OrderDTO> detail(@Valid OrderDetailForm orderDetailForm,
                                      BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            log.error("【查询订单详情】失败，参数不正确,orderDetailForm={}", orderDetailForm);
+            log.error("【查询订单详情】失败，参数不正确,orderDetailForm={}",orderDetailForm);
             throw new OrderException(ExceptionEnum.ORDER_FORM_ERROR.getCode(),
                     bindingResult.getFieldError().getDefaultMessage());
         }
@@ -111,7 +107,6 @@ public class BuyerOrderController {
 
     /**
      * 取消订单controller
-     *
      * @param orderDetailForm
      * @param bindingResult
      * @return
@@ -120,11 +115,11 @@ public class BuyerOrderController {
     public ResultVO<OrderDTO> cancle(@Valid OrderDetailForm orderDetailForm,
                                      BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            log.error("【取消订单】失败，参数不正确,orderDetailForm={}", orderDetailForm);
+            log.error("【取消订单】失败，参数不正确,orderDetailForm={}",orderDetailForm);
             throw new OrderException(ExceptionEnum.ORDER_FORM_ERROR.getCode(),
                     bindingResult.getFieldError().getDefaultMessage());
         }
-        OrderDTO result = buyerService.cancleOrder(orderDetailForm.getOpenid(),
+        OrderDTO result = buyerService.cancelOrder(orderDetailForm.getOpenid(),
                 orderDetailForm.getOrderId());
         return ResultVOUtil.success(result);
     }

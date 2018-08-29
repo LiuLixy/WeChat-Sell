@@ -1,12 +1,12 @@
 package com.lwproject.wechatsell.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.lwproject.wechatsell.entity.OrderDetail;
 import com.lwproject.wechatsell.enums.OrderStatusEnum;
 import com.lwproject.wechatsell.enums.PayStatusEnum;
 import com.lwproject.wechatsell.util.Date2LongUtil;
 import com.lwproject.wechatsell.util.EnumUtil;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -14,10 +14,10 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 用于在各层传输订单信息类
+ * 用于在各层传输订单信息类, 订单信息返回前台
  *
  * @Author: LiuWang
- * @Created: 2018/8/19 08:02
+ * @Created: 2018/8/25 20:19
  */
 @Data
 public class OrderDTO {

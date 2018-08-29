@@ -10,12 +10,12 @@ import java.util.Date;
 
 /**
  * @Author: LiuWang
- * @Created: 2018/8/18 15:09
+ * @Created: 2018/8/25 20:54
  */
 @Entity
 @Data
 @DynamicUpdate
-public class OrderMaster {
+public class OrderMaster{
     /**
      * 订单Id
      */

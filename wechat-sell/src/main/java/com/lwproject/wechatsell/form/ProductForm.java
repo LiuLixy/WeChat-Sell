@@ -8,7 +8,7 @@ import java.math.BigDecimal;
  * 卖家端商品表单
  *
  * @Author: LiuWang
- * @Created: 2018/8/20 11:24
+ * @Created: 2018/8/26 14:57
  */
 @Data
 public class ProductForm {

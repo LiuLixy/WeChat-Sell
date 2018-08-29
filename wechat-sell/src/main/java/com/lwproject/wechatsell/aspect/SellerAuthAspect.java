@@ -19,7 +19,7 @@ import java.io.IOException;
 
 /**
  * @Author: LiuWang
- * @Created: 2018/8/18 14:12
+ * @Created: 2018/8/26 15:47
  */
 @Aspect
 @Component
@@ -28,12 +28,9 @@ public class SellerAuthAspect {
     public static final String USERNAME = "root";
     @Autowired
     private StringRedisTemplate redisTemplate;
-
     @Pointcut("execution(public * com.lwproject.wechatsell.controller.Seller*.*(..))" +
             "&& !execution(public * com.lwproject.wechatsell.controller.SellerLoginController.*(..))")
-    public void verify() {
-    }
-
+    public void verify(){}
     @Before("verify()")
     public void doVerify() {
         ServletRequestAttributes attributes =
@@ -41,7 +38,7 @@ public class SellerAuthAspect {
         HttpServletResponse response = attributes.getResponse();
         HttpServletRequest request = attributes.getRequest();
         // 查询Cookie
-        Cookie cookie = CookieUtil.get(request, USERNAME);
+        Cookie cookie = CookieUtil.get(request,USERNAME);
         if (cookie == null) {
             log.error("【登录校验】cookie为空，请重新输入");
             try {
@@ -59,6 +56,6 @@ public class SellerAuthAspect {
                 e.printStackTrace();
             }
         }
-        CookieUtil.set(USERNAME, token, response, 7200);
+        CookieUtil.set(USERNAME,token,response,7200);
     }
 }
