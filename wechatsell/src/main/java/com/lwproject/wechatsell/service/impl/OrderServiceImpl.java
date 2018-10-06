@@ -66,7 +66,11 @@ public class OrderServiceImpl implements IOrderService {
             // 订单详情入库
             orderDetail.setOrderId(orderId);
             orderDetail.setDetailId(GenerateKeyUtil.getUniqueKey());
+<<<<<<< HEAD:wechatsell/src/main/java/com/lwproject/wechatsell/service/impl/OrderServiceImpl.java
             BeanUtils.copyProperties(productInfo.get(),orderDetail);
+=======
+            BeanUtils.copyProperties(productInfo.get(), orderDetail);
+>>>>>>> 72f6a381900e2a10f37d1a662171c897d314a92c:wechat-sell/src/main/java/com/lwproject/wechatsell/service/impl/OrderServiceImpl.java
             orderDetailDao.save(orderDetail);
         }
         // 3.写入订单数据库(OrderMaster、OrderDetail)
@@ -93,7 +97,11 @@ public class OrderServiceImpl implements IOrderService {
             throw new OrderException(ExceptionEnum.ORDER_NOT_EXISTS);
         }
         List<OrderDetail> orderDetailList = orderDetailDao.findByOrderId(orderId);
+<<<<<<< HEAD:wechatsell/src/main/java/com/lwproject/wechatsell/service/impl/OrderServiceImpl.java
         if (orderDetailList.size() ==0 ){
+=======
+        if (orderDetailList.size() == 0) {
+>>>>>>> 72f6a381900e2a10f37d1a662171c897d314a92c:wechat-sell/src/main/java/com/lwproject/wechatsell/service/impl/OrderServiceImpl.java
             throw new OrderException(ExceptionEnum.ORDER_DETAIL_NOT_EXISTS);
         }
         OrderDTO orderDTO = new OrderDTO();
@@ -105,7 +113,11 @@ public class OrderServiceImpl implements IOrderService {
     @Override
     public Page<OrderDTO> findOrderList(String buyerOpenid, Pageable pageable) {
         Page<OrderMaster> orderMasterPage =
+<<<<<<< HEAD:wechatsell/src/main/java/com/lwproject/wechatsell/service/impl/OrderServiceImpl.java
                 orderMasterDao.findByBuyerOpenid(buyerOpenid,pageable);
+=======
+                orderMasterDao.findByBuyerOpenid(buyerOpenid, pageable);
+>>>>>>> 72f6a381900e2a10f37d1a662171c897d314a92c:wechat-sell/src/main/java/com/lwproject/wechatsell/service/impl/OrderServiceImpl.java
         // 将OrderMaster转为OrderDTO
         List<OrderDTO> orderDTOList =
                 OrderMaster2OrderDTO.convert(orderMasterPage.getContent());
@@ -127,7 +139,11 @@ public class OrderServiceImpl implements IOrderService {
         // 2.修改订单状态
         // 状态2表示已取消
         orderDTO.setOrderStatus(2);
+<<<<<<< HEAD:wechatsell/src/main/java/com/lwproject/wechatsell/service/impl/OrderServiceImpl.java
         BeanUtils.copyProperties(orderDTO,orderMaster);
+=======
+        BeanUtils.copyProperties(orderDTO, orderMaster);
+>>>>>>> 72f6a381900e2a10f37d1a662171c897d314a92c:wechat-sell/src/main/java/com/lwproject/wechatsell/service/impl/OrderServiceImpl.java
         OrderMaster result = orderMasterDao.save(orderMaster);
         if (result == null) {
             log.error("【取消订单】更新失败,orderMaster={}",orderMaster);
@@ -161,7 +177,11 @@ public class OrderServiceImpl implements IOrderService {
         // 2.修改订单状态,1表示商家已接单
         orderDTO.setOrderStatus(1);
         OrderMaster orderMaster = new OrderMaster();
+<<<<<<< HEAD:wechatsell/src/main/java/com/lwproject/wechatsell/service/impl/OrderServiceImpl.java
         BeanUtils.copyProperties(orderDTO,orderMaster);
+=======
+        BeanUtils.copyProperties(orderDTO, orderMaster);
+>>>>>>> 72f6a381900e2a10f37d1a662171c897d314a92c:wechat-sell/src/main/java/com/lwproject/wechatsell/service/impl/OrderServiceImpl.java
         OrderMaster result = orderMasterDao.save(orderMaster);
         if (result == null) {
             log.error("【完结订单】订单更新失败,orderMaster={}",orderMaster);
@@ -186,7 +206,11 @@ public class OrderServiceImpl implements IOrderService {
         // 3.修改支付状态,1表示已支付
         orderDTO.setPayStatus(1);
         OrderMaster orderMaster = new OrderMaster();
+<<<<<<< HEAD:wechatsell/src/main/java/com/lwproject/wechatsell/service/impl/OrderServiceImpl.java
         BeanUtils.copyProperties(orderDTO,orderMaster);
+=======
+        BeanUtils.copyProperties(orderDTO, orderMaster);
+>>>>>>> 72f6a381900e2a10f37d1a662171c897d314a92c:wechat-sell/src/main/java/com/lwproject/wechatsell/service/impl/OrderServiceImpl.java
         OrderMaster result = orderMasterDao.save(orderMaster);
         if (result == null) {
             log.error("【支付订单】订单更新失败,orderMaster={}",orderMaster);
