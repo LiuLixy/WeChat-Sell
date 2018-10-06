@@ -1,5 +1,7 @@
 package com.lwproject.wechatsell.service.impl;
 
+import com.lwproject.wechatsell.dao.OrderDetailDao;
+import com.lwproject.wechatsell.dao.OrderMasterDao;
 import com.lwproject.wechatsell.dto.CartDTO;
 import com.lwproject.wechatsell.dto.OrderDTO;
 import com.lwproject.wechatsell.entity.OrderDetail;
@@ -8,8 +10,6 @@ import com.lwproject.wechatsell.entity.ProductInfo;
 import com.lwproject.wechatsell.enums.ExceptionEnum;
 import com.lwproject.wechatsell.exception.OrderException;
 import com.lwproject.wechatsell.exception.ProductNotFoundException;
-import com.lwproject.wechatsell.repository.OrderDetailReposity;
-import com.lwproject.wechatsell.repository.OrderMasterReposity;
 import com.lwproject.wechatsell.service.IOrderService;
 import com.lwproject.wechatsell.service.IProductService;
 import com.lwproject.wechatsell.util.GenerateKeyUtil;
@@ -41,9 +41,9 @@ public class OrderServiceImpl implements IOrderService {
     @Autowired
     private IProductService productService;
     @Autowired
-    private OrderDetailReposity orderDetailReposity;
+    private OrderDetailDao orderDetailDao;
     @Autowired
-    private OrderMasterReposity orderMasterReposity;
+    private OrderMasterDao orderMasterDao;
 
     @Override
     @Transactional
@@ -68,7 +68,7 @@ public class OrderServiceImpl implements IOrderService {
             orderDetail.setOrderId(orderId);
             orderDetail.setDetailId(GenerateKeyUtil.getUniqueKey());
             BeanUtils.copyProperties(productInfo.get(), orderDetail);
-            orderDetailReposity.save(orderDetail);
+            orderDetailDao.save(orderDetail);
         }
         // 3.写入订单数据库(OrderMaster、OrderDetail)
         OrderMaster orderMaster = new OrderMaster();
@@ -77,7 +77,7 @@ public class OrderServiceImpl implements IOrderService {
         orderMaster.setOrderAmount(orderAmount);
         orderMaster.setOrderStatus(0);
         orderMaster.setPayStatus(0);
-        orderMasterReposity.save(orderMaster);
+        orderMasterDao.save(orderMaster);
         // 4.扣库存
         List<CartDTO> cartDTOList =
                 orderDTO.getOrderDetailList().stream()
@@ -89,11 +89,11 @@ public class OrderServiceImpl implements IOrderService {
 
     @Override
     public OrderDTO findOne(String orderId) {
-        Optional<OrderMaster> orderMaster = orderMasterReposity.findById(orderId);
+        Optional<OrderMaster> orderMaster = orderMasterDao.findById(orderId);
         if (orderMaster == null) {
             throw new OrderException(ExceptionEnum.ORDER_NOT_EXISTS);
         }
-        List<OrderDetail> orderDetailList = orderDetailReposity.findByOrderId(orderId);
+        List<OrderDetail> orderDetailList = orderDetailDao.findByOrderId(orderId);
         if (orderDetailList.size() == 0) {
             throw new OrderException(ExceptionEnum.ORDER_DETAIL_NOT_EXISTS);
         }
@@ -106,7 +106,7 @@ public class OrderServiceImpl implements IOrderService {
     @Override
     public Page<OrderDTO> findOrderList(String buyerOpenid, Pageable pageable) {
         Page<OrderMaster> orderMasterPage =
-                orderMasterReposity.findByBuyerOpenid(buyerOpenid, pageable);
+                orderMasterDao.findByBuyerOpenid(buyerOpenid, pageable);
         // 将OrderMaster转为OrderDTO
         List<OrderDTO> orderDTOList =
                 OrderMaster2OrderDTO.convert(orderMasterPage.getContent());
@@ -129,7 +129,7 @@ public class OrderServiceImpl implements IOrderService {
         // 状态2表示已取消
         orderDTO.setOrderStatus(2);
         BeanUtils.copyProperties(orderDTO, orderMaster);
-        OrderMaster result = orderMasterReposity.save(orderMaster);
+        OrderMaster result = orderMasterDao.save(orderMaster);
         if (result == null) {
             log.error("【取消订单】更新失败,orderMaster={}", orderMaster);
             throw new OrderException(ExceptionEnum.ORDER_UPDATE_FAIL);
@@ -163,7 +163,7 @@ public class OrderServiceImpl implements IOrderService {
         orderDTO.setOrderStatus(1);
         OrderMaster orderMaster = new OrderMaster();
         BeanUtils.copyProperties(orderDTO, orderMaster);
-        OrderMaster result = orderMasterReposity.save(orderMaster);
+        OrderMaster result = orderMasterDao.save(orderMaster);
         if (result == null) {
             log.error("【完结订单】订单更新失败,orderMaster={}", orderMaster);
             throw new OrderException(ExceptionEnum.ORDER_UPDATE_FAIL);
@@ -188,7 +188,7 @@ public class OrderServiceImpl implements IOrderService {
         orderDTO.setPayStatus(1);
         OrderMaster orderMaster = new OrderMaster();
         BeanUtils.copyProperties(orderDTO, orderMaster);
-        OrderMaster result = orderMasterReposity.save(orderMaster);
+        OrderMaster result = orderMasterDao.save(orderMaster);
         if (result == null) {
             log.error("【支付订单】订单更新失败,orderMaster={}", orderMaster);
             throw new OrderException(ExceptionEnum.ORDER_UPDATE_FAIL);
@@ -199,7 +199,7 @@ public class OrderServiceImpl implements IOrderService {
     @Override
     public Page<OrderDTO> findList(Pageable pageable) {
         Page<OrderMaster> orderMasterPage =
-                orderMasterReposity.findAll(pageable);
+                orderMasterDao.findAll(pageable);
         List<OrderDTO> orderDTOList =
                 OrderMaster2OrderDTO.convert(orderMasterPage.getContent());
         return new PageImpl<>(orderDTOList, pageable, orderMasterPage.getTotalElements());
