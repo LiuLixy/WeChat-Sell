@@ -13,12 +13,17 @@ import java.util.List;
  */
 @Data
 public class ProductVO {
-
+    /**
+     * 类目名称
+     */
     @JsonProperty("name")
     private String categoryName;
+    /**
+     * 类目类型
+     */
     @JsonProperty("type")
     private Integer categoryType;
+
     @JsonProperty("foods")
     private List<ProductInfoVO> productInfoVOLists;
-
 }

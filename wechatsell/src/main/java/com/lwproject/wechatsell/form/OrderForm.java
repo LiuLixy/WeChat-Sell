@@ -5,12 +5,13 @@ import lombok.Data;
 import javax.validation.constraints.NotEmpty;
 
 /**
+ * 订单表单验证类
+ *
  * @Author: LiuWang
  * @Created: 2018/8/26 14:55
  */
 @Data
 public class OrderForm {
-
     /**
      * 买家姓名
      */
@@ -36,5 +37,4 @@ public class OrderForm {
      */
     @NotEmpty(message = "购物车不能为空")
     private String items;
-
 }

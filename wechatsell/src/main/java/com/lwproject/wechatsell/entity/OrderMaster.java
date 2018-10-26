@@ -12,13 +12,12 @@ import java.util.Date;
  * @Author: LiuWang
  * @Created: 2018/8/25 20:54
  */
-@Data
 @Entity
+@Data
 @DynamicUpdate
-public class OrderMaster {
-
+public class OrderMaster{
     /**
-     * 订单编号
+     * 订单Id
      */
     @Id
     private String orderId;
@@ -26,45 +25,33 @@ public class OrderMaster {
      * 买家姓名
      */
     private String buyerName;
-
     /**
-     * 买家电话
+     * 买家手机号
      */
     private String buyerPhone;
-
     /**
      * 买家地址
      */
     private String buyerAddress;
-
-    /**
-     * 买家微信 openid
-     */
     private String buyerOpenid;
-
     /**
      * 订单总金额
      */
     private BigDecimal orderAmount;
-
     /**
-     * 订单状态, 默认为0, 新下单
+     * 订单状态，默认0为新下单
      */
-    private Integer orderStatus;
-
+    private Integer orderStatus = 0;
     /**
-     * 支付状态, 默认为0, 未支付
+     * 支付状态，默认0为未支付
      */
-    private Integer payStatus;
-
+    private Integer payStatus = 0;
     /**
      * 创建时间
      */
     private Date createTime;
-
     /**
      * 修改时间
      */
     private Date updateTime;
-
 }

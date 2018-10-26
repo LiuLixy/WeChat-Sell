@@ -25,23 +25,29 @@ import java.io.IOException;
 @Component
 @Slf4j
 public class SellerAuthAspect {
-    public static final String USERNAME = "root";
+
+    public static final String USERNAME = "admin";
     @Autowired
     private StringRedisTemplate redisTemplate;
+
     @Pointcut("execution(public * com.lwproject.wechatsell.controller.Seller*.*(..))" +
             "&& !execution(public * com.lwproject.wechatsell.controller.SellerLoginController.*(..))")
-    public void verify(){}
+    public void verify() {
+    }
+
     @Before("verify()")
     public void doVerify() {
         ServletRequestAttributes attributes =
                 (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        assert attributes != null;
         HttpServletResponse response = attributes.getResponse();
         HttpServletRequest request = attributes.getRequest();
         // 查询Cookie
-        Cookie cookie = CookieUtil.get(request,USERNAME);
+        Cookie cookie = CookieUtil.get(request, USERNAME);
         if (cookie == null) {
             log.error("【登录校验】cookie为空，请重新输入");
             try {
+                assert response != null;
                 response.sendRedirect("/sell");
             } catch (IOException e) {
                 e.printStackTrace();
@@ -51,11 +57,13 @@ public class SellerAuthAspect {
         if (StringUtils.isEmpty(token)) {
             log.error("【登录校验】Redis中查不到指定token");
             try {
+                assert response != null;
                 response.sendRedirect("/sell");
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        CookieUtil.set(USERNAME,token,response,7200);
+        assert response != null;
+        CookieUtil.set(USERNAME, token, response, 7200);
     }
 }

@@ -12,11 +12,9 @@ import java.util.Date;
  * @Created: 2018/8/26 14:09
  */
 public class Date2LongUtil extends JsonSerializer<Date> {
-
     @Override
     public void serialize(Date value, JsonGenerator gen,
                           SerializerProvider serializers) throws IOException {
-        gen.writeNumber(value.getTime()/1000);
+        gen.writeNumber(value.getTime() / 1000);
     }
-
 }

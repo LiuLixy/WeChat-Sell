@@ -3,19 +3,17 @@ package com.lwproject.wechatsell.dto;
 import lombok.Data;
 
 /**
- * 购物车实体类
+ * 购物车
  *
  * @Author: LiuWang
  * @Created: 2018/8/25 20:17
  */
 @Data
 public class CartDTO {
-
     /**
-     * 商品 id
+     * 商品Id
      */
     private String productId;
-
     /**
      * 商品数量
      */
@@ -25,6 +23,5 @@ public class CartDTO {
         this.productId = productId;
         this.productQuantity = productQuantity;
     }
-
     public CartDTO(){}
 }

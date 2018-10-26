@@ -19,7 +19,6 @@ import java.util.List;
  */
 @Slf4j
 public class OrderForm2OrderDTO {
-
     public static OrderDTO convert(OrderForm orderForm) {
         OrderDTO orderDTO = new OrderDTO();
         Gson gson = new Gson();

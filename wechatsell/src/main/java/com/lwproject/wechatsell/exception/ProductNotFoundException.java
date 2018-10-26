@@ -9,7 +9,6 @@ import lombok.Getter;
  */
 @Getter
 public class ProductNotFoundException extends RuntimeException {
-
     private Integer code;
 
     public ProductNotFoundException(ExceptionEnum exceptionEnum) {

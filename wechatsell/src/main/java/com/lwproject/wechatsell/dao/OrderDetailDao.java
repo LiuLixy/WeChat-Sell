@@ -9,7 +9,7 @@ import java.util.List;
  * @Author: LiuWang
  * @Created: 2018/8/26 10:31
  */
-public interface OrderDetailDao extends JpaRepository<OrderDetail, String> {
+public interface OrderDetailDao extends JpaRepository<OrderDetail,String> {
 
     /**
      * 通过订单 id 查询订单详情表

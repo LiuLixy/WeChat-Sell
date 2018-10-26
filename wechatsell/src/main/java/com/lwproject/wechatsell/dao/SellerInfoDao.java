@@ -7,8 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @Author: LiuWang
  * @Created: 2018/8/26 14:32
  */
-public interface SellerInfoDao extends JpaRepository<SellerInfo, String> {
-
+public interface SellerInfoDao extends JpaRepository<SellerInfo,String> {
     /**
      * 通过用户名查找
      *
@@ -16,5 +15,4 @@ public interface SellerInfoDao extends JpaRepository<SellerInfo, String> {
      * @return
      */
     SellerInfo findByUsername(String username);
-
 }

@@ -20,10 +20,9 @@ import java.util.concurrent.TimeUnit;
  * @Created: 2018/8/26 15:24
  */
 @Controller
-@Slf4j
 @RequestMapping("/seller")
+@Slf4j
 public class SellerLoginController {
-
     public static final int EXPIRE_TIME = 7200;
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -52,5 +51,4 @@ public class SellerLoginController {
         CookieUtil.set(username, token, response, EXPIRE_TIME);
         return "200";
     }
-
 }

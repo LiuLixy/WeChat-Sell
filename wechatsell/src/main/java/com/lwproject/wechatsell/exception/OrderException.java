@@ -9,7 +9,6 @@ import lombok.Getter;
  */
 @Getter
 public class OrderException extends RuntimeException {
-
     private Integer code;
 
     public OrderException(ExceptionEnum exceptionEnum) {
@@ -20,5 +19,4 @@ public class OrderException extends RuntimeException {
         super(msg);
         this.code = code;
     }
-
 }

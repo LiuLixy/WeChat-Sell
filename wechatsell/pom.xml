@@ -5,11 +5,11 @@
 
     <groupId>com.lwproject</groupId>
     <artifactId>wechat-sell</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.2</version>
     <packaging>jar</packaging>
 
-    <name>wechatsell</name>
-    <description>这是一个微信点餐小程序</description>
+    <name>wechat-sell</name>
+    <description>微信点餐系统</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

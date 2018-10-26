@@ -8,9 +8,8 @@ import lombok.Getter;
  */
 @Getter
 public enum PayStatusEnum implements IEnumCode {
-
     /**
-     * 支付状态
+     * 支付状态枚举类
      */
     WAIT(0,"等待支付"),
     SUCCESS(1,"支付成功");
@@ -21,5 +20,4 @@ public enum PayStatusEnum implements IEnumCode {
         this.code = code;
         this.msg = msg;
     }
-
 }

@@ -3,17 +3,13 @@ package com.lwproject.wechatsell;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
 /**
- * WechatsellApplication
- *
- * @Author: LiuWang
- * @Created: 2018/8/24 16:58
+ * @author LiuWang
  */
 @SpringBootApplication
-public class WechatsellApplication {
+public class WechatSellApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(WechatsellApplication.class, args);
+        SpringApplication.run(WechatSellApplication.class, args);
     }
 }

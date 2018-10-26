@@ -9,14 +9,12 @@ import lombok.Getter;
 @Getter
 public enum OrderStatusEnum implements IEnumCode {
     /**
-     * 订单状态
+     * 订单状态枚举类
      */
-    NEW(0, "新订单"),
-    FINISHED(1, "已完成"),
-    CANCEL(2, "已取消");
-
+    NEW(0,"新订单"),
+    FINISHED(1,"订单完成"),
+    CANCEL(2,"取消订单");
     private Integer code;
-
     private String msg;
 
     OrderStatusEnum(Integer code, String msg) {

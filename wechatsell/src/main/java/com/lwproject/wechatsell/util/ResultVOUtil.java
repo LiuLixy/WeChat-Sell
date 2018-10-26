@@ -7,7 +7,6 @@ import com.lwproject.wechatsell.vo.ResultVO;
  * @Created: 2018/8/25 18:56
  */
 public class ResultVOUtil {
-
     public static ResultVO success(Object data) {
         ResultVO resultVO = new ResultVO();
         resultVO.setCode(0);
@@ -21,5 +20,4 @@ public class ResultVOUtil {
         resultVO.setMsg(msg);
         return resultVO;
     }
-
 }

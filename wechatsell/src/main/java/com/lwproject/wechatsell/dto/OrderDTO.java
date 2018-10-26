@@ -14,14 +14,13 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 订单信息返回前台
+ * 用于在各层传输订单信息类, 订单信息返回前台
  *
  * @Author: LiuWang
  * @Created: 2018/8/25 20:19
  */
 @Data
 public class OrderDTO {
-
     private String orderId;
     private String buyerName;
     private String buyerPhone;
@@ -45,6 +44,4 @@ public class OrderDTO {
     public PayStatusEnum getPayStatusEnum() {
         return EnumUtil.getEnumDataByCode(payStatus, PayStatusEnum.class);
     }
-
-
 }

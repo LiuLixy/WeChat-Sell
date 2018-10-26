@@ -1,6 +1,5 @@
 package com.lwproject.wechatsell.service.impl;
 
-import com.lwproject.wechatsell.dao.ProductInfoDao;
 import com.lwproject.wechatsell.dto.CartDTO;
 import com.lwproject.wechatsell.entity.ProductInfo;
 import com.lwproject.wechatsell.enums.ExceptionEnum;
@@ -8,7 +7,8 @@ import com.lwproject.wechatsell.enums.ProductStatusEnum;
 import com.lwproject.wechatsell.exception.ProductNotFoundException;
 import com.lwproject.wechatsell.exception.ProductStatusError;
 import com.lwproject.wechatsell.exception.ProductStockErrorException;
-import com.lwproject.wechatsell.service.IProductInfoService;
+import com.lwproject.wechatsell.dao.ProductInfoDao;
+import com.lwproject.wechatsell.service.IProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,14 +25,15 @@ import java.util.Optional;
  */
 @Service
 @Slf4j
-public class ProductInfoServiceImpl implements IProductInfoService {
-
+public class ProductInfoServiceImpl implements IProductService {
     @Autowired
     private ProductInfoDao productInfoDao;
 
     @Override
     public Optional<ProductInfo> findOne(String productId) {
-        return productInfoDao.findById(productId);
+        Optional<ProductInfo> productInfo =
+                productInfoDao.findById(productId);
+        return productInfo;
     }
 
     @Override
@@ -55,10 +56,11 @@ public class ProductInfoServiceImpl implements IProductInfoService {
     public void increaseStock(List<CartDTO> cartDTOList) {
         for (CartDTO cartDTO : cartDTOList) {
             Optional<ProductInfo> productInfo = productInfoDao.findById(cartDTO.getProductId());
-            if (productInfo == null) {
+            if (!productInfo.isPresent()) {
                 throw new ProductNotFoundException(ExceptionEnum.PRODUCT_NOT_EXIST);
             }
-            Integer result = productInfo.get().getProductStock() + cartDTO.getProductQuantity();
+            Integer result = productInfo.get().getProductStock()
+                    + cartDTO.getProductQuantity();
             productInfo.get().setProductStock(result);
             productInfoDao.save(productInfo.get());
         }
@@ -69,7 +71,7 @@ public class ProductInfoServiceImpl implements IProductInfoService {
     public void decreaseStock(List<CartDTO> cartDTOList) {
         for (CartDTO cartDTO : cartDTOList) {
             Optional<ProductInfo> productInfo = productInfoDao.findById(cartDTO.getProductId());
-            if (productInfo == null) {
+            if (!productInfo.isPresent()) {
                 throw new ProductNotFoundException(ExceptionEnum.PRODUCT_NOT_EXIST);
             }
             Integer result = productInfo.get().getProductStock()
@@ -86,16 +88,15 @@ public class ProductInfoServiceImpl implements IProductInfoService {
     @Override
     @Transactional
     public ProductInfo onSale(String productId) {
-
         Optional<ProductInfo> productInfo = productInfoDao.findById(productId);
-        if (productId == null) {
+        if (!productInfo.isPresent()) {
             throw new ProductNotFoundException(ExceptionEnum.PRODUCT_NOT_EXIST);
         }
         if (productInfo.get().getProductStatus().equals(ProductStatusEnum.UP.getCode())) {
             log.error("商品已为上架状态，无须再次上架..");
             throw new ProductStatusError(ExceptionEnum.PRODUCT_STATUS_ERROR);
         }
-        log.info("商品上架中..，商品Id为{}", productId);
+        log.info("商品上架ing..，商品Id为{}", productId);
         productInfo.get().setProductStatus(ProductStatusEnum.UP.getCode());
         return productInfoDao.save(productInfo.get());
     }
@@ -104,7 +105,7 @@ public class ProductInfoServiceImpl implements IProductInfoService {
     @Transactional
     public ProductInfo offSale(String productId) {
         Optional<ProductInfo> productInfo = productInfoDao.findById(productId);
-        if (productInfo == null) {
+        if (!productInfo.isPresent()) {
             throw new ProductNotFoundException(ExceptionEnum.PRODUCT_NOT_EXIST);
         }
         if (productInfo.get().getProductStatus().equals(ProductStatusEnum.DOWN.getCode())) {
@@ -115,4 +116,5 @@ public class ProductInfoServiceImpl implements IProductInfoService {
         productInfo.get().setProductStatus(ProductStatusEnum.DOWN.getCode());
         return productInfoDao.save(productInfo.get());
     }
+
 }

@@ -1,9 +1,9 @@
 {
   "errno": 0,
   "data": {
-    "name": "婆婆蛙炭火蛙锅",
-    "description": "蜂鸟专送",
-    "deliveryTime": 40,
+    "name": "正宗川味盖浇饭(西安工大店)",
+    "description": "商家配送",
+    "deliveryTime": 45,
     "score": 4.2,
     "serviceScore": 4.1,
     "foodScore": 4.3,
@@ -11,20 +11,20 @@
     "minPrice": 0,
     "deliveryPrice": 0,
     "ratingCount": 24,
-    "sellCount": 90,
-    "bulletin": "婆婆蛙炭火蛙锅，吃过的都说好",
+    "sellCount": 1588,
+    "bulletin": "欢迎光临，用餐高峰期请提前下单，谢谢",
     "supports": [
       {
         "type": 0,
-        "description": "在线支付满28减5"
+        "description": "新学期开学推出特惠套餐"
       },
       {
         "type": 1,
-        "description": "2-3人炭火蛙锅套餐"
+        "description": "小炒肉盖浇饭+饮料"
       },
       {
         "type": 2,
-        "description": "2-3人鱿鱼爱上虾套餐"
+        "description": "土豆盐煎肉盖浇饭+饮料"
       },
       {
         "type": 3,
@@ -35,7 +35,7 @@
         "description": "已加入“外卖保”计划,食品安全保障"
       }
     ],
-    "avatar": "http://static.galileo.xiaojukeji.com/static/tms/seller_avatar_256px.jpg",
+    "avatar": "https://wechatimag.oss-cn-beijing.aliyuncs.com/wechat-sell-imgs/timg.jpg",
     "pics": [
       "http://fuss10.elemecdn.com/8/71/c5cf5715740998d5040dda6e66abfjpeg.jpeg?imageView2/1/w/180/h/180",
       "http://fuss10.elemecdn.com/b/6c/75bd250e5ba69868f3b1178afbda3jpeg.jpeg?imageView2/1/w/180/h/180",
@@ -44,9 +44,9 @@
     ],
     "infos": [
       "该商家支持发票,请下单写好发票抬头",
-      "品类:早餐",
-      "上海市闵行区古美路1388号",
-      "营业时间:10:00-22:30"
+      "品类:快餐",
+      "西安市未央区苏席村",
+      "营业时间:10:00-21:30"
     ]
   }
 }

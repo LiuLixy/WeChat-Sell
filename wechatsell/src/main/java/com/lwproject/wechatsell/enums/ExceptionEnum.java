@@ -9,7 +9,7 @@ import lombok.Getter;
 @Getter
 public enum ExceptionEnum {
     /**
-     * 异常信息
+     * 异常枚举类
      */
     ORDER_FORM_ERROR(1,"订单表单入参有误"),
     PRODUCT_NOT_EXIST(10,"商品不存在"),
@@ -24,7 +24,7 @@ public enum ExceptionEnum {
     ORDER_OWNER_ERROR(19,"该订单不属于当前用户!"),
     WECHAT_MP_ERROR(20,"微信公众号授权错误"),
     PRODUCT_STATUS_ERROR(21,"商品状态错误");
-
+    ;
     private Integer code;
     private String msg;
 

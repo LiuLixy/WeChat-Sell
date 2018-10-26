@@ -7,7 +7,6 @@ import com.lwproject.wechatsell.enums.ExceptionEnum;
  * @Created: 2018/8/26 15:23
  */
 public class WechatException extends RuntimeException {
-
     private Integer code;
 
     public WechatException(ExceptionEnum exceptionEnum) {
@@ -19,5 +18,4 @@ public class WechatException extends RuntimeException {
         super(msg);
         this.code = code;
     }
-
 }

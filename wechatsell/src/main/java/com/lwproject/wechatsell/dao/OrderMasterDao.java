@@ -9,8 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @Author: LiuWang
  * @Created: 2018/8/26 10:30
  */
-public interface OrderMasterDao extends JpaRepository<OrderMaster,String> {
-
+public interface OrderMasterDao extends JpaRepository<OrderMaster, String> {
     /**
      * 通过买家微信 openid 分页查询订单
      *

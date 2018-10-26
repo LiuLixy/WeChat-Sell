@@ -43,7 +43,7 @@
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!--文件路径-->
             <fileNamePattern>
-                D:\\programming\\EE\\log\\weixinsell.error.%d.log
+                D:\\programming\\EE\\log\\wechatsell.error.%d.log
             </fileNamePattern>
         </rollingPolicy>
     </appender>

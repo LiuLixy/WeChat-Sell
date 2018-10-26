@@ -5,12 +5,10 @@ package com.lwproject.wechatsell.enums;
  * @Created: 2018/8/26 14:12
  */
 public interface IEnumCode {
-
     /**
-     * 获取错误码
+     * 错误码
      *
      * @return
      */
     Integer getCode();
-
 }

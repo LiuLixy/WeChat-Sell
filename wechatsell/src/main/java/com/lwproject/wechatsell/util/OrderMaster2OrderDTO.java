@@ -2,7 +2,6 @@ package com.lwproject.wechatsell.util;
 
 import com.lwproject.wechatsell.dto.OrderDTO;
 import com.lwproject.wechatsell.entity.OrderMaster;
-import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
 import java.util.List;
@@ -12,7 +11,6 @@ import java.util.stream.Collectors;
  * @Author: LiuWang
  * @Created: 2018/8/26 14:25
  */
-@Data
 public class OrderMaster2OrderDTO {
 
     public static OrderDTO convert(OrderMaster orderMaster) {
@@ -24,9 +22,8 @@ public class OrderMaster2OrderDTO {
     public static List<OrderDTO> convert(List<OrderMaster> orderMasterList) {
         List<OrderDTO> orderDTOList =
                 orderMasterList.stream()
-                        .map(e -> convert(e))
-                        .collect(Collectors.toList());
+                .map(e -> convert(e))
+                .collect(Collectors.toList());
         return orderDTOList;
     }
-
 }

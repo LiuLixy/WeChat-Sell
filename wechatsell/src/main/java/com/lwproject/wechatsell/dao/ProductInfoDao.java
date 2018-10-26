@@ -9,8 +9,7 @@ import java.util.List;
  * @Author: LiuWang
  * @Created: 2018/8/25 16:08
  */
-public interface ProductInfoDao extends JpaRepository<ProductInfo, String> {
-
+public interface ProductInfoDao extends JpaRepository<ProductInfo,String> {
     /**
      * 根据商品状态一次查询所有商品
      *

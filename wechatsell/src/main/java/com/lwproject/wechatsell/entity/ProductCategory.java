@@ -15,35 +15,33 @@ import java.util.Date;
  * @Author: LiuWang
  * @Created: 2018/8/20 18:26
  */
-@Data
 @Entity
 @DynamicUpdate
+@Data
 public class ProductCategory {
-    /**
-     * 商品编号
-     *
-     * @Id 这个注解表示主键
-     * @GeneratedValue 自增主键
-     */
+    public ProductCategory() {
+    }
+    public ProductCategory(String categoryName, Integer categoryType) {
+        this.categoryName = categoryName;
+        this.categoryType = categoryType;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    /**
+     * 类目Id
+     */
     private Integer categoryId;
     /**
-     * 商品名称
+     * 类目名称
      */
     private String categoryName;
     /**
-     * 商品类目
+     * 类目类型
      */
     private Integer categoryType;
 
-    /**
-     * 创建时间
-     */
     private Date createTime;
 
-    /**
-     * 修改时间
-     */
     private Date updateTime;
 }

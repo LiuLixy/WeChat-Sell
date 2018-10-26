@@ -4,7 +4,7 @@ import com.lwproject.wechatsell.entity.ProductCategory;
 import com.lwproject.wechatsell.entity.ProductInfo;
 import com.lwproject.wechatsell.form.ProductForm;
 import com.lwproject.wechatsell.service.IProductCategoryService;
-import com.lwproject.wechatsell.service.IProductInfoService;
+import com.lwproject.wechatsell.service.IProductService;
 import com.lwproject.wechatsell.util.GenerateKeyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -33,9 +33,8 @@ import java.util.Optional;
 @RequestMapping("/seller/product")
 @Slf4j
 public class SellerProductController {
-
     @Autowired
-    private IProductInfoService productInfoService;
+    private IProductService productService;
     @Autowired
     private IProductCategoryService categoryService;
 
@@ -44,7 +43,7 @@ public class SellerProductController {
                              @RequestParam(value = "size", defaultValue = "10") Integer size,
                              Map<String, Object> map) {
         PageRequest request = PageRequest.of(page - 1, size);
-        Page<ProductInfo> productInfoPage = productInfoService.findAll(request);
+        Page<ProductInfo> productInfoPage = productService.findAll(request);
         map.put("productInfoPage", productInfoPage);
         map.put("currentPage", page);
         map.put("size", size);
@@ -55,7 +54,7 @@ public class SellerProductController {
     public ModelAndView onSale(@RequestParam("productId") String productId,
                                Map<String, Object> map) {
         try {
-            productInfoService.onSale(productId);
+            productService.onSale(productId);
         } catch (Exception e) {
             log.error("【商品上架】异常,{}", e.getMessage());
             map.put("msg", e.getMessage());
@@ -71,7 +70,7 @@ public class SellerProductController {
     public ModelAndView offSale(@RequestParam("productId") String productId,
                                 Map<String, Object> map) {
         try {
-            productInfoService.offSale(productId);
+            productService.offSale(productId);
         } catch (Exception e) {
             log.error("【商品下架】异常,{}", e.getMessage());
             map.put("msg", e.getMessage());
@@ -94,7 +93,7 @@ public class SellerProductController {
     public ModelAndView index(@RequestParam(value = "productId", required = false) String productId,
                               Map<String, Object> map) {
         if (!StringUtils.isEmpty(productId)) {
-            Optional<ProductInfo> productInfo = productInfoService.findOne(productId);
+            Optional<ProductInfo> productInfo = productService.findOne(productId);
             map.put("productInfo", productInfo.get());
         }
         // 查询所有类目
@@ -116,13 +115,13 @@ public class SellerProductController {
         Optional<ProductInfo> productInfo = Optional.of(new ProductInfo());
         try {
             if (!StringUtils.isEmpty(productForm.getProductId())) {
-                productInfo = productInfoService.findOne(productForm.getProductId());
+                productInfo = productService.findOne(productForm.getProductId());
             } else {
                 // 如果表单中没有productId属性，则为新增商品,获取一个随机productId
                 productForm.setProductId(GenerateKeyUtil.getUniqueKey());
             }
             BeanUtils.copyProperties(productForm, productInfo.get());
-            productInfoService.save(productInfo.get());
+            productService.save(productInfo.get());
         } catch (Exception e) {
             map.put("msg", e.getMessage());
             map.put("url", "/sell/seller/product/list");
@@ -132,5 +131,4 @@ public class SellerProductController {
         map.put("url", "/sell/seller/product/list");
         return new ModelAndView("/comm/success", map);
     }
-
 }
